@@ -1,0 +1,21 @@
+fastapi==0.115.6
+uvicorn==0.34.0
+python-multipart==0.0.20
+
+# Numeric stack pinned for the Windows CPU EXE build.
+# InsightFace imports SciPy extension modules through scikit-image/sklearn paths.
+# Keeping numpy + scipy pinned avoids broken/mismatched binary wheels.
+numpy==1.26.4
+scipy==1.11.4
+scikit-image==0.22.0
+scikit-learn==1.4.2
+matplotlib==3.8.4
+
+opencv-python==4.10.0.84
+pillow==11.0.0
+insightface==0.7.3
+
+# CPU runtime for maximum portability. This works on most Windows machines
+# with Python 3.11, but video analysis will be slower than GPU mode.
+onnxruntime==1.18.1
+msvc-runtime

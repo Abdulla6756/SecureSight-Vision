@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SecureSight Vision</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">SV</div>
+        <div>
+          <h1>SecureSight Vision</h1>
+          <p>Node.js Frontend</p>
+        </div>
+      </div>
+
+      <button class="nav active" data-page="analyze">Analyze</button>
+      <button class="nav" data-page="people">People</button>
+      <button class="nav" data-page="reports">Reports</button>
+
+      <div class="device-card">
+        <span>Face Device</span>
+        <strong id="deviceText">--</strong>
+        <small id="providerText">Backend loading...</small>
+        <button id="faceTestBtn" class="small-btn">Test Face Engine</button>
+      </div>
+    </aside>
+
+    <main>
+      <section id="page-analyze" class="page active">
+        <header class="page-header">
+          <h2>Analyze Video</h2>
+          <p>Upload an entrance/CCTV video. The backend detects faces, counts re-entry events, and records known/unknown detections and creates a security report.</p>
+        </header>
+
+        <div class="card">
+          <div class="form-grid">
+            <label>
+              Video file
+              <input id="videoFile" type="file" accept="video/*" />
+            </label>
+            <label>
+              Sample every seconds
+              <input id="sampleEvery" type="number" min="0.2" step="0.2" value="1" />
+            </label>
+          </div>
+          <button id="startAnalyzeBtn" class="primary">Start Analysis</button>
+        </div>
+
+        <div id="statusCard" class="card hidden">
+          <div class="status-top">
+            <strong id="statusText">Queued</strong>
+            <span id="statusDevice">Device: --</span>
+          </div>
+          <p id="statusStep">--</p>
+          <div class="progress"><i id="progressBar"></i></div>
+          <small id="elapsedText">Analyze Time: 00:00:00</small>
+        </div>
+
+        <div id="reportView"></div>
+      </section>
+
+      <section id="page-people" class="page">
+        <header class="page-header">
+          <h2>People</h2>
+          <p>Add, edit, delete people, and manage their face images.</p>
+        </header>
+
+        <form id="personForm" class="card">
+          <input type="hidden" id="personId" />
+          <div class="form-grid">
+            <label>Name <input id="name" required /></label>
+            <label>Employee ID <input id="employeeId" /></label>
+            <label>Role <input id="role" /></label>
+            <label>Department <input id="department" /></label>
+          </div>
+          <label>Face images <input id="faceImages" type="file" accept="image/*" multiple /></label>
+          <div class="actions">
+            <button class="primary" type="submit" id="savePersonBtn">Add Person</button>
+            <button type="button" id="cancelEditBtn" class="hidden">Cancel Edit</button>
+          </div>
+        </form>
+
+        <div id="peopleGrid" class="people-grid"></div>
+      </section>
+
+      <section id="page-reports" class="page">
+        <header class="page-header">
+          <h2>Saved Reports</h2>
+          <p>Clear reports for guards and supervisors. Reports are stored locally in backend/data/reports.json.</p>
+        </header>
+        <div id="reportsList"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

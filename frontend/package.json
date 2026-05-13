@@ -1,0 +1,11 @@
+{
+  "name": "securesight-vision-frontend",
+  "version": "2.1.0",
+  "private": true,
+  "description": "Dependency-free Node.js frontend server for SecureSight Vision",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {}
+}

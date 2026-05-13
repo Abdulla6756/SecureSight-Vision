@@ -1,0 +1,19 @@
+fastapi==0.115.6
+uvicorn==0.34.0
+python-multipart==0.0.20
+opencv-python==4.10.0.84
+numpy==1.26.4
+pillow==11.0.0
+insightface==0.7.3
+
+# ONNX Runtime GPU. Version 1.21+ provides onnxruntime.preload_dlls().
+# The [cuda,cudnn] extra installs CUDA 12 + cuDNN 9 runtime DLLs into the
+# virtual environment so the app does not need a manual CUDA Toolkit install.
+onnxruntime-gpu[cuda,cudnn]==1.21.1
+
+# ONNXRuntime CUDA convolution can also need these CUDA math/runtime DLLs.
+# They are added explicitly because some pip resolver/platform combinations
+# install cublas/cufft/curand/cudnn but skip cusolver/cusparse.
+nvidia-cusolver-cu12
+nvidia-cusparse-cu12
+
